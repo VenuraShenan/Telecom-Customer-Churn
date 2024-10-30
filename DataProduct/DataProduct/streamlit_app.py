@@ -3,10 +3,10 @@ import pickle
 import pandas as pd
 
 # Load your trained models
-with open('DataProduct\DataProduct\models\internet_users.pkl', 'rb') as f:
+with open('DataProduct/DataProduct/models/internet_users.pkl', 'rb') as f:
     internet_model = pickle.load(f)
 
-with open('DataProduct\DataProduct\models\internet_users.pkl', 'rb') as f:
+with open('DataProduct/DataProduct/models/internet_users.pkl', 'rb') as f:
     non_internet_model = pickle.load(f)
 
 # Function to predict customer churn
