@@ -1,0 +1,105 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a modern font */
+    background-color: #f4f4f4; /* Light gray background */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333; /* Dark gray color */
+    text-align: center; /* Center the header */
+    margin-bottom: 30px; /* Space below the header */
+}
+
+form {
+    background: #fff; /* White background */
+    padding: 30px; /* More padding for a spacious look */
+    border-radius: 8px; /* Slightly more rounded corners */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    max-width: 600px; /* Limit width for better layout */
+    margin: 0 auto; /* Center form in the middle of the page */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px; /* Adjusted spacing */
+    font-weight: bold; /* Make label text bold */
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px;
+    transition: border-color 0.3s ease; /* Smooth transition for focus effect */
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    background-color: #007bff; /* Primary blue color */
+    color: white;
+    padding: 12px 20px; /* Increased padding for buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Larger font size for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+h2 {
+    margin-top: 20px;
+    color: #333;
+    text-align: center; /* Center the prediction results */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 8px; /* Rounded corners for modal */
+}
+
+.close {
+    color: #aaa; /* Gray color for close button */
+    float: right; /* Right aligned */
+    font-size: 28px; /* Size of close button */
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Color on hover */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Pointer cursor */
+}
+
+/* Loading spinner */
+.loading {
+    display: none; /* Hidden by default */
+    text-align: center; /* Center the loading text */
+    font-size: 18px; /* Adjust size */
+    color: #007bff; /* Loading text color */
+}

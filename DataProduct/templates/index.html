@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body>
+    <h1>Customer Churn Prediction</h1>
+    <form method="POST" action="/predict">
+        <label>Gender:
+            <select name="Gender" required>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+        </label><br>
+
+        <label>Age:
+            <input type="number" name="Age" required>
+        </label><br>
+
+        <label>Married:
+            <select name="Married" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Number of Dependents:
+            <input type="number" name="Number of Dependents" required>
+        </label><br>
+
+        <label>Number of Referrals:
+            <input type="number" name="Number of Referrals" required>
+        </label><br>
+
+        <label>Offer:
+            <select name="Offer" required>
+                <option value="Declined">Declined</option>
+                <option value="Offer E">Offer E</option>
+                <option value="Offer D">Offer D</option>
+                <option value="Offer A">Offer A</option>
+                <option value="Offer B">Offer B</option>
+                <option value="Offer C">Offer C</option>
+            </select>
+        </label><br>
+
+        <label>Phone Service:
+            <select name="Phone Service" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Avg Monthly Long Distance Charges:
+            <input type="number" step="0.01" name="Avg Monthly Long Distance Charges" required>
+        </label><br>
+
+        <label>Multiple Lines:
+            <select name="Multiple Lines" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+                <option value="Not Subscribed to phone">Not Subscribed to phone</option>
+            </select>
+        </label><br>
+
+        <label>Internet Service:
+            <select name="Internet Service" required>
+                <option value="Yes">Yes</option>
+            </select>
+        </label><br>
+
+        <label>Internet Type:
+            <select name="Internet Type" required>
+                <option value="Cable">Cable</option>
+                <option value="Fiber Optic">Fiber Optic</option>
+                <option value="DSL">DSL</option>
+            </select>
+        </label><br>
+
+        <label>Online Security:
+            <select name="Online Security" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </label><br>
+
+        <label>Online Backup:
+            <select name="Online Backup" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Device Protection Plan:
+            <select name="Device Protection Plan" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </label><br>
+
+        <label>Premium Tech Support:
+            <select name="Premium Tech Support" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Streaming TV:
+            <select name="Streaming TV" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Streaming Movies:
+            <select name="Streaming Movies" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </label><br>
+
+        <label>Streaming Music:
+            <select name="Streaming Music" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </label><br>
+
+        <label>Unlimited Data:
+            <select name="Unlimited Data" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Contract:
+            <select name="Contract" required>
+                <option value="One Year">One Year</option>
+                <option value="Month-to-Month">Month-to-Month</option>
+                <option value="Two Year">Two Year</option>
+            </select>
+        </label><br>
+
+        <label>Paperless Billing:
+            <select name="Paperless Billing" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label><br>
+
+        <label>Payment Method:
+            <select name="Payment Method" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Bank Withdrawal">Bank Withdrawal</option>
+                <option value="Mailed Check">Mailed Check</option>
+            </select>
+        </label><br>
+
+        <label>Monthly Charge:
+            <input type="number" step="0.01" name="Monthly Charge" required>
+        </label><br>
+
+        <label>Total Revenue:
+            <input type="number" step="0.01" name="Total Revenue" required>
+        </label><br>
+
+        <label>Region:
+            <select name="Region" required>
+                <option value="Central Coast">Central Coast</option>
+                <option value="Los Angeles Region">Los Angeles Region</option>
+                <option value="Orange County">Orange County</option>
+                <option value="Bay Area">Bay Area</option>
+                <option value="Other">Other</option>
+                <option value="Napa Valley">Napa Valley</option>
+                <option value="Silicon Valley">Silicon Valley</option>
+                <option value="North Coast">North Coast</option>
+                <option value="Northern California">Northern California</option>
+                <option value="San Diego County">San Diego County</option>
+                <option value="Sacramento Valley">Sacramento Valley</option>
+                <option value="Inland Empire">Inland Empire</option>
+                <option value="High Sierra">High Sierra</option>
+            </select>
+        </label><br>
+
+        <label>Avg Monthly Charge:
+            <input type="number" step="0.01" name="Avg Monthly Charge" required>
+        </label><br>
+
+        <label>Refund Rate:
+            <input type="number" step="0.01" name="Refund Rate" required>
+        </label><br>
+
+        <label>Data Efficiency:
+            <input type="number" step="0.01" name="Data Efficiency" required>
+        </label><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+    {% if probability %}
+        <h2>{{ probability }}</h2>
+    {% endif %}
+    
+</body>
+</html>
