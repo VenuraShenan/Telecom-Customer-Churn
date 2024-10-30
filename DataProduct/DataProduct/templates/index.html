@@ -67,74 +67,78 @@
         </label><br>
 
         <label>Internet Service:
-            <select name="Internet Service" required>
-                <option value="Yes">Yes</option>
-            </select>
-        </label><br>
-
-        <label>Internet Type:
-            <select name="Internet Type" required>
-                <option value="Cable">Cable</option>
-                <option value="Fiber Optic">Fiber Optic</option>
-                <option value="DSL">DSL</option>
-            </select>
-        </label><br>
-
-        <label>Online Security:
-            <select name="Online Security" required>
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-            </select>
-        </label><br>
-
-        <label>Online Backup:
-            <select name="Online Backup" required>
+            <select name="Internet Service" id="internet-service" required onchange="toggleInternetFields()">
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
             </select>
         </label><br>
 
-        <label>Device Protection Plan:
-            <select name="Device Protection Plan" required>
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-            </select>
-        </label><br>
+        <div id="internet-fields">
+            <label>Internet Type:
+                <select name="Internet Type" required>
+                    <option value="Cable">Cable</option>
+                    <option value="Fiber Optic">Fiber Optic</option>
+                    <option value="DSL">DSL</option>
+                    <option value="Not Subscribed to Internet">Not Subscribed to Internet</option>
+                </select>
+            </label><br>
 
-        <label>Premium Tech Support:
-            <select name="Premium Tech Support" required>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-        </label><br>
+            <label>Online Security:
+                <select name="Online Security" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </label><br>
 
-        <label>Streaming TV:
-            <select name="Streaming TV" required>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-        </label><br>
+            <label>Online Backup:
+                <select name="Online Backup" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </label><br>
 
-        <label>Streaming Movies:
-            <select name="Streaming Movies" required>
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-            </select>
-        </label><br>
+            <label>Device Protection Plan:
+                <select name="Device Protection Plan" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </label><br>
 
-        <label>Streaming Music:
-            <select name="Streaming Music" required>
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-            </select>
-        </label><br>
+            <label>Premium Tech Support:
+                <select name="Premium Tech Support" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </label><br>
 
-        <label>Unlimited Data:
-            <select name="Unlimited Data" required>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-        </label><br>
+            <label>Streaming TV:
+                <select name="Streaming TV" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </label><br>
+
+            <label>Streaming Movies:
+                <select name="Streaming Movies" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </label><br>
+
+            <label>Streaming Music:
+                <select name="Streaming Music" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </label><br>
+
+            <label>Unlimited Data:
+                <select name="Unlimited Data" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </label><br>
+        </div>
 
         <label>Contract:
             <select name="Contract" required>
@@ -201,11 +205,34 @@
     </form>
 
     {% if prediction %}
-        <h2>Prediction: {{ prediction }}</h2>
+        <h2>{{ prediction }}</h2>
     {% endif %}
     {% if probability %}
-        <h2>{{ probability }}</h2>
+        <h3>{{ probability }}</h3>
     {% endif %}
-    
+
+    <script>
+        function toggleInternetFields() {
+            const internetService = document.getElementById('internet-service').value;
+            const internetFields = document.getElementById('internet-fields');
+            if (internetService === 'No') {
+                internetFields.style.display = 'none'; // Hide the internet fields
+                // Set default values for the fields
+                document.getElementsByName('Internet Type')[0].value = 'Not Subscribed to Internet';
+                document.getElementsByName('Online Security')[0].value = 'No';
+                document.getElementsByName('Online Backup')[0].value = 'No';
+                document.getElementsByName('Device Protection Plan')[0].value = 'No';
+                document.getElementsByName('Premium Tech Support')[0].value = 'No';
+                document.getElementsByName('Streaming TV')[0].value = 'No';
+                document.getElementsByName('Streaming Movies')[0].value = 'No';
+                document.getElementsByName('Streaming Music')[0].value = 'No';
+                document.getElementsByName('Unlimited Data')[0].value = 'No';
+            } else {
+                internetFields.style.display = 'block'; // Show the internet fields
+            }
+        }
+        // Call the function on page load to set the initial state
+        document.addEventListener('DOMContentLoaded', toggleInternetFields);
+    </script>
 </body>
 </html>
