@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Load your dataset
-df = pd.read_csv('Data\Cleaned_Data.csv')  # Replace with the actual path to your data
+df = pd.read_csv('Data/Cleaned_Data.csv')  # Replace with the actual path to your data
 
 # Apply Power BI-inspired dark theme styling
 st.set_page_config(layout="wide", page_title="Customer Churn Dashboard")
