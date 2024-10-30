@@ -2,19 +2,20 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-# Custom CSS
+# Custom CSS and JavaScript for dark theme
 st.markdown("""
     <style>
         /* General App Styles */
         .stApp {
-            background-color: #f8f9fa;
+            background-color: #2e2e2e;  /* Dark background */
+            color: white;  /* White text */
             padding: 20px;
             font-family: 'Arial', sans-serif;
         }
 
         /* Title Styling */
         h1 {
-            color: #333;
+            color: #ffffff;
             font-weight: bold;
             text-align: center;
             font-size: 2em;
@@ -25,10 +26,13 @@ st.markdown("""
         /* Input Field Styles */
         .stSelectbox, .stNumberInput {
             margin: 10px 0;
+            background-color: #444444;  /* Darker input field background */
+            color: white;  /* White text for input fields */
+            border: 1px solid #555555;  /* Lighter border */
         }
 
         .stSelectbox label, .stNumberInput label {
-            color: #555;
+            color: #dddddd;  /* Lighter label color */
             font-weight: 600;
             margin-bottom: 5px;
         }
@@ -43,7 +47,7 @@ st.markdown("""
             padding: 10px 20px;
             margin-top: 20px;
         }
-        
+
         button[kind="primary"]:hover {
             background-color: #0056b3;
         }
@@ -52,18 +56,48 @@ st.markdown("""
         .stMarkdown div p {
             font-size: 1.5em;
             font-weight: bold;
-            color: #28a745;
+            color: #28a745;  /* Green color for prediction */
             text-align: center;
             margin-top: 20px;
         }
     </style>
+
+    <script>
+        // Toggle dark/light theme
+        function toggleTheme() {
+            var app = document.querySelector('.stApp');
+            if (app.style.backgroundColor === 'rgb(46, 46, 46)') {
+                app.style.backgroundColor = '#f8f9fa';  // Light background
+                app.style.color = 'black';  // Black text
+                document.querySelectorAll('.stSelectbox, .stNumberInput').forEach(function(input) {
+                    input.style.backgroundColor = 'white';  // Light input background
+                    input.style.color = 'black';  // Black text for input fields
+                    input.style.border = '1px solid #cccccc';  // Lighter border
+                });
+                document.querySelectorAll('.stSelectbox label, .stNumberInput label').forEach(function(label) {
+                    label.style.color = '#333333';  // Darker label color
+                });
+            } else {
+                app.style.backgroundColor = '#2e2e2e';  // Dark background
+                app.style.color = 'white';  // White text
+                document.querySelectorAll('.stSelectbox, .stNumberInput').forEach(function(input) {
+                    input.style.backgroundColor = '#444444';  // Darker input field background
+                    input.style.color = 'white';  // White text for input fields
+                    input.style.border = '1px solid #555555';  // Lighter border
+                });
+                document.querySelectorAll('.stSelectbox label, .stNumberInput label').forEach(function(label) {
+                    label.style.color = '#dddddd';  // Lighter label color
+                });
+            }
+        }
+    </script>
 """, unsafe_allow_html=True)
 
 # Load your trained models
 with open('DataProduct/DataProduct/models/internet_users.pkl', 'rb') as f:
     internet_model = pickle.load(f)
 
-with open('DataProduct/DataProduct/models/internet_users.pkl', 'rb') as f:
+with open('DataProduct/DataProduct/models/non_internet_users.pkl', 'rb') as f:
     non_internet_model = pickle.load(f)
 
 # Function to predict customer churn
@@ -169,3 +203,8 @@ if st.button("Predict"):
 
     # Display the prediction result only
     st.write("Prediction:", "Churned" if prediction == 1 else "Not Churned")
+
+# Button to toggle theme
+if st.button("Toggle Theme"):
+    st.session_state.theme = not st.session_state.get('theme', False)
+    st.experimental_rerun()
