@@ -106,13 +106,9 @@ input_data = {
 # Predict button
 if st.button("Predict"):
     if internet_service == "Yes":
-        prediction, probabilities = predict_churn(input_data, internet_model)
+        prediction, _ = predict_churn(input_data, internet_model)
     else:
-        prediction, probabilities = predict_churn(input_data, non_internet_model)
+        prediction, _ = predict_churn(input_data, non_internet_model)
 
-    # Get the churn probability (assuming the probability of "Churned" is at index 1)
-    churn_probability = probabilities[1] * 100  # Probability of churn
-
-    # Display the prediction and its probability
+    # Display the prediction result only
     st.write("Prediction:", "Churned" if prediction == 1 else "Not Churned")
-    st.write(f"Probability of Churn: {churn_probability:.2f}%")
