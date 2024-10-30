@@ -2,6 +2,63 @@ import streamlit as st
 import pickle
 import pandas as pd
 
+# Custom CSS
+st.markdown("""
+    <style>
+        /* General App Styles */
+        .stApp {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Title Styling */
+        h1 {
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            font-size: 2em;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+        /* Input Field Styles */
+        .stSelectbox, .stNumberInput {
+            margin: 10px 0;
+        }
+
+        .stSelectbox label, .stNumberInput label {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Predict Button */
+        button[kind="primary"] {
+            background-color: #007bff;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+        
+        button[kind="primary"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Prediction Output */
+        .stMarkdown div p {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Load your trained models
 with open('DataProduct/DataProduct/models/internet_users.pkl', 'rb') as f:
     internet_model = pickle.load(f)
